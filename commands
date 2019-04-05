@@ -1,0 +1,4 @@
+oc create secret generic gitlab-local --from-literal=username=root --from-literal=password="changeme"
+
+oc new-build --strategy=docker --name=springboot-java https://github.com/vmartinvega-pivotal/openshift-s2i-springboot-java.git 
+oc set build-secret --source bc/springboot-java gitlab-local
